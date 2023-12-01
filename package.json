@@ -12,6 +12,8 @@
   "dependencies": {
     "@egjs/flicking": "^4.11.1",
     "@egjs/react-flicking": "^4.11.1",
+    "@tanstack/react-query": "^5.12.1",
+    "axios": "^1.6.2",
     "firebase": "^10.7.0",
     "flowbite": "^2.2.0",
     "framer-motion": "^10.16.5",
