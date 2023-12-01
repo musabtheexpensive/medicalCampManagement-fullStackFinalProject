@@ -58,7 +58,7 @@ const SignUp = () => {
             <img src={img} alt="" />
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <h1 className="text-3xl text-center font-bold">Sign Up!...</h1>
+            <h1 className="text-3xl text-center font-bold">Sign Up!...Please</h1>
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">

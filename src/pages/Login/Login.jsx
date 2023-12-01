@@ -8,7 +8,7 @@ import {
 } from "react-simple-captcha";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
-import login from '../../assets/student-login-2.svg'
+import login from "../../assets/student-login-2.svg";
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
   const { signIn } = useContext(AuthContext);
@@ -58,11 +58,11 @@ const Login = () => {
       </Helmet>
       <div className="hero  min-h-screen bg-gradient-to-r from-purple-200 via-pink-300 to-red-200 animate-gradient-x bg-opacity-80">
         <div className="hero-content mt-20 flex-col lg:flex-row">
-        <div className=" w-1/2 mr-12">
-          <img src={login} alt="" />
-        </div>
+          <div className=" w-1/2 mr-12">
+            <img src={login} alt="" />
+          </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <h1 className="text-3xl text-center font-bold">Login now!...</h1>
+            <h1 className="text-3xl text-center font-bold">Login now!...</h1>
             <form onSubmit={handleLogin} className="card-body">
               <div className="form-control">
                 <label className="label">

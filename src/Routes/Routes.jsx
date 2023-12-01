@@ -4,8 +4,8 @@ import Home from "../pages/Home/Home/Home";
 import AvailableCamp from "../pages/AvailableCamp.jsx/AvailableCamp";
 import AvailableDetails from "../pages/AvailableCamp.jsx/AvailableDetails";
 import Login from "../pages/Login/Login";
-import Register from "../pages/Login/SignUp";
 import SignUp from "../pages/Login/SignUp";
+// import PrivateRoute from "../Providers/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +19,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/availableCamp",
-        element: <AvailableCamp></AvailableCamp>,
+        element: (
+        
+            <AvailableCamp></AvailableCamp>
+         
+        ),
         // loader: ({ params }) =>
         //   fetch(`http://localhost:5000/allCamps/${params._id}`),
       },
