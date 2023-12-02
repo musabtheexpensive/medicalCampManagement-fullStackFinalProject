@@ -25,7 +25,7 @@ const Navbar = () => {
       <li>
         <Link
           to="/"
-          className="block text-yellow-100 py-2 px-3 md:p-0 w-fit transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
+          className="block text-black lg:text-yellow-100 py-2 px-3 md:p-0 w-fit transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
         >
           Home
         </Link>
@@ -49,7 +49,7 @@ const Navbar = () => {
       <li>
         <Link
           to="/contactUs"
-          className="block text-yellow-100 py-2 px-3 md:p-0 w-fit transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
+          className="block text-black lg:text-yellow-100 py-2 px-3 md:p-0 w-fit transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
         >
           ContactUs
         </Link>
@@ -105,7 +105,7 @@ const Navbar = () => {
           {user ? (
             <div className="flex justify-center mr-2 gap-2">
                  <div className="mt-2">
-                <h3 className="text-2xl font-bold bg-gradient-to-r from-slate-200 to-red-300 text-transparent bg-clip-text animate-bounce">
+                <h3 className="text-2xl font-bold bg-gradient-to-r from-gray-900 to-red-500 text-transparent bg-clip-text animate-bounce">
                   {user.displayName}
                 </h3>
               </div>

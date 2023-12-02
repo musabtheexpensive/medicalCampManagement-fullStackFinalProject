@@ -8,6 +8,7 @@ import SignUp from "../pages/Login/SignUp";
 import Dashboard from "../Layout/Dashboard";
 import UserProfile from "../pages/Profile/userProfile";
 import AllUsers from "../pages/Dashboard/AllUsers";
+import ContactUs from "../pages/ContactUs/ContactUs";
 // import PrivateRoute from "../Providers/PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
         element: <AvailableDetails></AvailableDetails>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/allCamps/${params.id}`),
+      },
+      {
+        path: "/contactUs",
+        element: <ContactUs></ContactUs>,
       },
       {
         path: "/login",
