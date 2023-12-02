@@ -6,6 +6,7 @@ import {
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
 import login from "../../assets/student-login-2.svg";
@@ -13,6 +14,7 @@ import GoogleLogin from "../../components/GoogleLogin/GoogleLogin";
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
   const { signIn } = useContext(AuthContext);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -81,11 +83,18 @@ const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="password"
                   className="input input-bordered"
+                  required
                 />
+                <span
+                  className="absolute top-52 right-10"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}
+                </span>
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">
                     Forgot password?
@@ -105,7 +114,6 @@ const Login = () => {
                 />
               </div>
               <div className="form-control mt-6">
-            
                 <input
                   disabled={disabled}
                   className="btn btn-primary"
@@ -121,12 +129,10 @@ const Login = () => {
                   Create an account
                 </Link>{" "}
               </small>
-              <h1 className="text-2xl font-bold text-center ">
-              Or
-            </h1>
+              <h1 className="text-2xl font-bold text-center ">Or</h1>
             </p>
-           
-           <GoogleLogin></GoogleLogin>
+
+            <GoogleLogin></GoogleLogin>
           </div>
         </div>
       </div>

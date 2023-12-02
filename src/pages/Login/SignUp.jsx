@@ -1,14 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import img from "../../assets/blog-header-QR-login.png";
 import UseAxiosPublic from "../../hooks/useAxiosPublic";
 import GoogleLogin from "../../components/GoogleLogin/GoogleLogin";
 const SignUp = () => {
   const axiosPublic = UseAxiosPublic();
+  const [showPassword, setShowPassword] = useState(false);
   const {
     register,
     handleSubmit,
@@ -109,12 +111,12 @@ const SignUp = () => {
                   <span className="text-red-600">Email is required</span>
                 )}
               </div>
-              <div className="form-control">
+              <div className="form-control relative">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   {...register("password", {
                     required: true,
                     minLength: 6,
@@ -124,6 +126,12 @@ const SignUp = () => {
                   placeholder="password"
                   className="input input-bordered"
                 />
+                  <span
+                  className="absolute top-14 right-2"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}
+                </span>
                 {errors.password?.type === "required" && (
                   <p className="text-red-600">Password is required</p>
                 )}
@@ -141,6 +149,7 @@ const SignUp = () => {
                     and one special character.
                   </p>
                 )}
+                
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">
                     Forgot password?
