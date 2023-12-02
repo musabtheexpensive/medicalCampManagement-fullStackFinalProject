@@ -1,8 +1,7 @@
-# React + Vite
+# MedicalCamp Mangement Full Project
+(☞ﾟヮﾟ)☞ do you manage instant a medicalCamp? just click here : https://medicalcamp-manage-fullproject.web.app/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+♿ Welcome to Medical Support Services! 🚑
+Medical Support Services is a state-accredited therapy provider specializing in physical, occupational, and speech services.
+We collaborate with our clients and their care teams to design intentional, creative experiences that foster growth.
+Our patients develop autonomy, whole health, independence, and confidence through progress and accomplishment in our state of the art therapy spaces.
