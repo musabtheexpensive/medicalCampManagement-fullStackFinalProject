@@ -15,7 +15,7 @@ const UserProfile = () => {
   };
   return (
     <div>
-      <div className=" w-full p-7 max-w-sm text-center bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <div className="  p-7 max-w-sm lg:ml-60 text-center bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <div className="flex justify-end px-4 pt-4">
           <button
             id="dropdownButton"

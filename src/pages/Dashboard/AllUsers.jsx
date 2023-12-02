@@ -83,7 +83,7 @@ const AllUsers = () => {
                     ) : (
                       <button
                         onClick={() => handleMakeAdmin(user)}
-                        className="btn btn-lg bg-orange-500"
+                        className="btn btn-lg bg-purple-400"
                       >
                         <FaUsers
                           className="text-white 
