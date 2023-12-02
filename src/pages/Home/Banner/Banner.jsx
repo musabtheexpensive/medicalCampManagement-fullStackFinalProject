@@ -9,7 +9,7 @@ export const Banner = () => {
       images={[
         "https://i.ibb.co/0sr6fTw/banner3.webp",
         "https://images.unsplash.com/photo-1606244864456-8bee63fce472?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=681&q=80",
-        "https://i.ibb.co/Wcsqx94/banner2.webp",
+        "https://i.ibb.co/1QgMWNP/topbanner2.jpg",
         "https://images.unsplash.com/photo-1629901925121-8a141c2a42f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
         "https://i.ibb.co/N2PL31p/banner10.png",
         "https://i.ibb.co/Wcsqx94/banner2.webp",
@@ -26,7 +26,7 @@ export const Banner = () => {
       ]}
     >
       <section
-        className=" h-[550px] w-full rounded-4xl"
+        className=" h-[570px]  bg-cover bg-center bg-no-repeat rounded-lg"
         style={{
           backgroundImage: "url('https://i.ibb.co/N2PL31p/banner10.png')",
         }}

@@ -25,7 +25,7 @@ const Navbar = () => {
       <li>
         <Link
           to="/"
-          className="block text-gray-900 py-2 px-3 md:p-0 w-fit transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
+          className="block text-yellow-100 py-2 px-3 md:p-0 w-fit transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
         >
           Home
         </Link>
@@ -49,7 +49,7 @@ const Navbar = () => {
       <li>
         <Link
           to="/contactUs"
-          className="block text-gray-900 py-2 px-3 md:p-0 w-fit transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
+          className="block text-yellow-100 py-2 px-3 md:p-0 w-fit transition-all shadow-[3px_3px_0px_black] hover:shadow-none hover:translate-x-[3px] hover:translate-y-[3px]"
         >
           ContactUs
         </Link>
@@ -88,8 +88,8 @@ const Navbar = () => {
             <div className="w-1/4 ">
               <img src={logo} alt="" />
             </div>
-            <div className="animate-ping lg:mt-3 ">
-              <a className="bg-gradient-to-r from-indigo-500 hover:from-pink-500 hover:to-yellow-500 normal-case text-3xl">
+            <div className="lg:animate-ping lg:mt-3 ">
+              <a className="bg-gradient-to-r from-red-400 hover:from-pink-500 hover:to-yellow-500 normal-case text-3xl">
                 MediCo
               </a>
             </div>
@@ -105,7 +105,7 @@ const Navbar = () => {
           {user ? (
             <div className="flex justify-center mr-2 gap-2">
                  <div className="mt-2">
-                <h3 className="text-2xl font-bold text-teal-500">
+                <h3 className="text-2xl font-bold bg-gradient-to-r from-slate-200 to-red-300 text-transparent bg-clip-text animate-bounce">
                   {user.displayName}
                 </h3>
               </div>
@@ -140,7 +140,7 @@ const Navbar = () => {
               </Link>
               <Link
                 to="/signUp"
-                className="btn btn-xs sm:btn-sm md:btn-md btn-active text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                className="btn   md:btn-md btn-active text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
               >
                 SignUp
               </Link>

@@ -7,6 +7,7 @@ import Login from "../pages/Login/Login";
 import SignUp from "../pages/Login/SignUp";
 import Dashboard from "../Layout/Dashboard";
 import UserProfile from "../pages/Profile/userProfile";
+import AllUsers from "../pages/Dashboard/AllUsers";
 // import PrivateRoute from "../Providers/PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -48,6 +49,11 @@ export const router = createBrowserRouter([
       {
         path: "profile",
         element: <UserProfile></UserProfile>,
+      },
+      // admin routes
+      {
+        path: "users",
+        element: <AllUsers></AllUsers>,
       },
     ],
   },
