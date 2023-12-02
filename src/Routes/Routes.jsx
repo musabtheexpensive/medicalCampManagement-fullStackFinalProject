@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/allCamps"),
+        loader: () => fetch("https://backend-medical-camp-management-full-project-12.vercel.app/allCamps"),
       },
       {
         path: "/availableCamp",
@@ -29,13 +29,13 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         // loader: ({ params }) =>
-        //   fetch(`http://localhost:5000/allCamps/${params._id}`),
+        //   fetch(`https://backend-medical-camp-management-full-project-12.vercel.app/allCamps/${params._id}`),
       },
       {
         path: "/availableDetails/:id",
         element: <AvailableDetails></AvailableDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allCamps/${params.id}`),
+          fetch(`https://backend-medical-camp-management-full-project-12.vercel.app/allCamps/${params.id}`),
       },
       {
         path: "/contactUs",
