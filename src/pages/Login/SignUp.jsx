@@ -5,7 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
 import img from "../../assets/blog-header-QR-login.png";
+import UseAxiosPublic from "../../hooks/useAxiosPublic";
 const SignUp = () => {
+  const axiosPublic = UseAxiosPublic();
   const {
     register,
     handleSubmit,
@@ -58,7 +60,9 @@ const SignUp = () => {
             <img src={img} alt="" />
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <h1 className="text-3xl text-center font-bold">Sign Up!...Please</h1>
+            <h1 className="text-3xl text-center font-bold">
+              Sign Up!...Please
+            </h1>
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">
