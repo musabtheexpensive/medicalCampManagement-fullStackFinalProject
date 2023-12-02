@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
 import img from "../../assets/blog-header-QR-login.png";
 import UseAxiosPublic from "../../hooks/useAxiosPublic";
+import GoogleLogin from "../../components/GoogleLogin/GoogleLogin";
 const SignUp = () => {
   const axiosPublic = UseAxiosPublic();
   const {
@@ -161,8 +162,11 @@ const SignUp = () => {
                   Login
                 </Link>
               </small>
+              <h1 className="text-2xl font-bold text-center m-2">
+              Or
+            </h1>
             </p>
-            {/* <SocialLogin></SocialLogin> */}
+           <GoogleLogin></GoogleLogin>
           </div>
         </div>
       </div>

@@ -9,6 +9,7 @@ import {
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
 import login from "../../assets/student-login-2.svg";
+import GoogleLogin from "../../components/GoogleLogin/GoogleLogin";
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
   const { signIn } = useContext(AuthContext);
@@ -32,7 +33,7 @@ const Login = () => {
       const user = result.user;
       console.log(user);
       Swal.fire({
-        title: "User Login Successful.",
+        title: "Login Successfully.",
         showClass: {
           popup: "animate__animated animate__fadeInDown",
         },
@@ -120,8 +121,12 @@ const Login = () => {
                   Create an account
                 </Link>{" "}
               </small>
+              <h1 className="text-2xl font-bold text-center ">
+              Or
+            </h1>
             </p>
-            {/* <SocialLogin></SocialLogin> */}
+           
+           <GoogleLogin></GoogleLogin>
           </div>
         </div>
       </div>
