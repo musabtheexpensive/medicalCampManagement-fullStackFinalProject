@@ -9,8 +9,9 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import app from "../../src/firebase.config";
+
 import UseAxiosPublic from "../hooks/useAxiosPublic";
+import app from "../firebase/firebase.config";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
