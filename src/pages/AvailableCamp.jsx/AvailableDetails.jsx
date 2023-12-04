@@ -1,6 +1,7 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import Loaders from "./Loaders";
+import JoinCampForm from "./JoinCampForm";
 
 const AvailableDetails = () => {
   const details = useLoaderData();
@@ -71,8 +72,15 @@ const AvailableDetails = () => {
                 <ol>Injections.</ol>
               </ul>
             </p>
-            <h2 className="text-3xl font-extrabold">Camping Time : {scheduledDateTime}</h2>
-            <p className="text-2xl font-bold bg-gradient-to-r from-gray-500 to-red-500 text-transparent bg-clip-text">For : {targetAudience}</p>
+            <div>
+              <h2 className="text-3xl mt-3 font-extrabold">
+                Camping Time : {scheduledDateTime}
+              </h2>
+              <p className="text-2xl mt-3 font-bold bg-gradient-to-r from-gray-500 to-red-500 text-transparent bg-clip-text">
+                For : {targetAudience}
+              </p>
+            <JoinCampForm></JoinCampForm>
+            </div>
           </div>
         </div>
       </div>
