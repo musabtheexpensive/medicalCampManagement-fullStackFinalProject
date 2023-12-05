@@ -27,7 +27,7 @@ const SpringModal = ({ isOpen, setIsOpen }) => {
         };
         console.log(addCamp);
         // send data to the server
-        fetch("http://localhost:5000/joinCamp", {
+        fetch("https://backend-medical-camp-management-full-project-12.vercel.app/joinCamp", {
           method: "POST",
           headers: {
             "content-type": "application/json",

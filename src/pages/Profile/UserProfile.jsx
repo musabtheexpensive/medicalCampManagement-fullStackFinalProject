@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FiAlertCircle } from "react-icons/fi";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 const UserProfile = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
@@ -13,116 +14,49 @@ const UserProfile = () => {
       .then(() => console.log("user logged out successfully"))
       .catch((error) => console.error(error));
   };
-  return (
-    <div>
-      <div className="  p-7 max-w-sm lg:ml-60 text-center bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <div className="flex justify-end px-4 pt-4">
-          <button
-            id="dropdownButton"
-            data-dropdown-toggle="dropdown"
-            className="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
-            type="button"
-          >
-            <span className="sr-only">Open dropdown</span>
-            <svg
-              className="w-5 h-5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 16 3"
-            >
-              <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
-            </svg>
-          </button>
-          {/* <!-- Dropdown menu --> */}
-          <div
-            id="dropdown"
-            className="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
-          >
-            <ul className="py-2" aria-labelledby="dropdownButton">
-              <li>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >
-                  Edit
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >
-                  Export Data
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >
-                  Delete
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="flex flex-col items-center pb-10">
-          {user ? (
-            <div className="flex justify-center mr-2 gap-2">
-              <div className="w-14 rounded-full">
-                <img src={user.photoURL} alt="" />
-              </div>
-              <div className="mt-2">
-                <h3 className="text-2xl font-bold bg-gradient-to-r from-slate-600 to-red-300 text-transparent bg-clip-text">
-                  {user.displayName}
-                </h3>
-              </div>
-            </div>
-          ) : (
-            <div>User: N\A</div>
-          )}
-
-          <h5 className="m-4  font-medium text-gray-900 dark:text-white">
-            LoggedIn: {user?.metadata.lastSignInTime}
-          </h5>
-          <span className="text-sm text-gray-500 dark:text-gray-400">
-            {user?.email}
-          </span>
-          <div className="py-3 grid place-content-center">
-            <button
-              onClick={() => setIsOpen(true)}
-              className="inline-flex items-center  text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-            >
-              <MdBrowserUpdated />
-              UpdateProfile
-            </button>
-            <SpringModal isOpen={isOpen} setIsOpen={setIsOpen} />
-          </div>
-          {user ? (
-            <div>
-              <button
-                onClick={handleSignOut}
-                className="btn btn-base  mr-16  btn-active text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 "
-              >
-                LogOut
-              </button>
-            </div>
-          ) : (
-            <div>
-              <Link to="/login">
-                <button className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                  LogIn
-                </button>
-              </Link>
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-};
+ 
 const SpringModal = ({ isOpen, setIsOpen }) => {
+  const handleUpdate = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const floating_email = form.floating_email.value;
+    const floating_password = form.floating_password.value;
+    const floating_repeat_password = form.floating_repeat_password.value;
+    const floating_age = form.floating_age.value;
+    const floating_blood_group = form.floating_blood_group.value;
+    const floating_phone = form.floating_phone.value;
+    const floating_company = form.floating_company.value;
+    const updateProfile = {
+      floating_email,
+      floating_password,
+      floating_repeat_password,
+      floating_age,
+      floating_blood_group,
+      floating_phone,
+      floating_company,
+    };
+    console.log(updateProfile);
+    // send data to the server
+    fetch("https://backend-medical-camp-management-full-project-12.vercel.app/updateProfile", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateProfile),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Profile Updated Successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
+  };
   return (
     <AnimatePresence>
       {isOpen && (
@@ -146,7 +80,7 @@ const SpringModal = ({ isOpen, setIsOpen }) => {
                 <FiAlertCircle />
               </div>
 
-              <form className="max-w-md mx-auto">
+              <form onSubmit={handleUpdate} className="max-w-md mx-auto">
                 <div className="relative z-0 w-full mb-5 group">
                   <input
                     type="email"
@@ -306,6 +240,116 @@ const SpringModal = ({ isOpen, setIsOpen }) => {
       )}
     </AnimatePresence>
   );
+};
+
+return (
+  <div>
+    <div className="  p-7 max-w-sm lg:ml-60 text-center bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <div className="flex justify-end px-4 pt-4">
+        <button
+          id="dropdownButton"
+          data-dropdown-toggle="dropdown"
+          className="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
+          type="button"
+        >
+          <span className="sr-only">Open dropdown</span>
+          <svg
+            className="w-5 h-5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 16 3"
+          >
+            <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z" />
+          </svg>
+        </button>
+        {/* <!-- Dropdown menu --> */}
+        <div
+          id="dropdown"
+          className="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+        >
+          <ul className="py-2" aria-labelledby="dropdownButton">
+            <li>
+              <a
+                href="#"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+              >
+                Edit
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+              >
+                Export Data
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+              >
+                Delete
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className="flex flex-col items-center pb-10">
+        {user ? (
+          <div className="flex justify-center mr-2 gap-2">
+            <div className="w-14 rounded-full">
+              <img src={user.photoURL} alt="" />
+            </div>
+            <div className="mt-2">
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-slate-600 to-red-300 text-transparent bg-clip-text">
+                {user.displayName}
+              </h3>
+            </div>
+          </div>
+        ) : (
+          <div>User: N\A</div>
+        )}
+
+        <h5 className="m-4  font-medium text-gray-900 dark:text-white">
+          LoggedIn: {user?.metadata.lastSignInTime}
+        </h5>
+        <span className="text-sm text-gray-500 dark:text-gray-400">
+          {user?.email}
+        </span>
+        <div className="py-3 grid place-content-center">
+          <button
+            onClick={() => setIsOpen(true)}
+            className="inline-flex items-center  text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+          >
+            <MdBrowserUpdated />
+            UpdateProfile
+          </button>
+          <SpringModal isOpen={isOpen} setIsOpen={setIsOpen} />
+        </div>
+        {user ? (
+          <div>
+            <button
+              onClick={handleSignOut}
+              className="btn btn-base  mr-16  btn-active text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 "
+            >
+              LogOut
+            </button>
+          </div>
+        ) : (
+          <div>
+            <Link to="/login">
+              <button className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                LogIn
+              </button>
+            </Link>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+);
 };
 
 export default UserProfile;
