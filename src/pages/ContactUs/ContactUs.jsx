@@ -1,10 +1,14 @@
 import React from "react";
 import Carousels from "./Carousels";
+import { Helmet } from "react-helmet-async";
 
 const ContactUs = () => {
   return (
     <div>
       <div className="pt-28 text-center">
+      <Helmet>
+        <title>MediCo | ContactUs</title>
+      </Helmet>
         <Carousels></Carousels>
         <div className="p-10">
           <h1 className="text-4xl font-bold">Our Location</h1>

@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FiAlertCircle } from "react-icons/fi";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const JoinCampForm = () => {
     
@@ -66,6 +67,9 @@ const SpringModal = ({ isOpen, setIsOpen }) => {
           >
             <FiAlertCircle className="text-white/10 rotate-12 text-[250px] absolute z-0 -top-24 -left-24" />
             <div className="relative z-10">
+            <Helmet>
+        <title>MediCo | JoinCamp</title>
+      </Helmet>
               <form onSubmit={handleJoinCamp}>
                 {/* form name and age row */}
                 <div className="md:flex mb-8">

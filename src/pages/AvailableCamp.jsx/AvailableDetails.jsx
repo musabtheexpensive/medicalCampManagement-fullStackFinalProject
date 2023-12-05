@@ -2,6 +2,7 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import Loaders from "./Loaders";
 import JoinCampForm from "./JoinCampForm";
+import { Helmet } from "react-helmet-async";
 
 const AvailableDetails = () => {
   const details = useLoaderData();
@@ -19,6 +20,9 @@ const AvailableDetails = () => {
   } = details;
   return (
     <div className="pt-28">
+        <Helmet>
+        <title>MediCo | Details</title>
+      </Helmet>
       <div role="status" className="animate-pulse">
         <div className="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700 max-w-[640px] mb-2.5 mx-auto"></div>
         <div className="h-2.5 mx-auto bg-gray-300 rounded-full dark:bg-gray-700 max-w-[540px]"></div>

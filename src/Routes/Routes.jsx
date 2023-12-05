@@ -10,6 +10,8 @@ import UserProfile from "../pages/Profile/userProfile";
 import AllUsers from "../pages/Dashboard/AllUsers";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import PrivateRoute from "../Providers/PrivateRoute";
+import AddCamps from "../pages/Dashboard/AddCamps";
+import AdminRoute from "../Providers/AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +21,10 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("https://backend-medical-camp-management-full-project-12.vercel.app/allCamps"),
+        loader: () =>
+          fetch(
+            "https://backend-medical-camp-management-full-project-12.vercel.app/allCamps"
+          ),
       },
       {
         path: "/availableCamp",
@@ -35,7 +40,9 @@ export const router = createBrowserRouter([
         path: "/availableDetails/:id",
         element: <AvailableDetails></AvailableDetails>,
         loader: ({ params }) =>
-          fetch(`https://backend-medical-camp-management-full-project-12.vercel.app/allCamps/${params.id}`),
+          fetch(
+            `https://backend-medical-camp-management-full-project-12.vercel.app/allCamps/${params.id}`
+          ),
       },
       {
         path: "/contactUs",
@@ -66,7 +73,19 @@ export const router = createBrowserRouter([
       // admin routes
       {
         path: "users",
-        element: <AllUsers></AllUsers>,
+        element: (
+          <AdminRoute>
+            <AllUsers></AllUsers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "addCamp",
+        element: (
+          <AdminRoute>
+            <AddCamps></AddCamps>
+          </AdminRoute>
+        ),
       },
     ],
   },

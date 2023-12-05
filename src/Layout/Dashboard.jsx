@@ -23,19 +23,19 @@ const Dashboard = () => {
               <li>
                 <NavLink to="/dashboard/addCamp">
                   <GiGoblinCamp />
-                  Add Items
+                  Add Camps
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/manageCamp">
                   <TbCamper />
-                  Manage Items
+                  Manage Camps
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/users">
                   <FaUsers></FaUsers>
-                  All Users
+                  All LogIn Users
                 </NavLink>
               </li>
             </>
