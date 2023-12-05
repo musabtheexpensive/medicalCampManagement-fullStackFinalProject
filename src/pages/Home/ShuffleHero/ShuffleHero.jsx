@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 const ShuffleHero = () => {
   return (
@@ -8,15 +9,16 @@ const ShuffleHero = () => {
         <span className="block mb-4 text-xs md:text-sm text-indigo-500 font-medium">
           Better every day
         </span>
-        <h3 className="text-4xl md:text-6xl font-semibold">
-          Emergency Medico
-        </h3>
+        <h3 className="text-4xl md:text-6xl font-semibold">Emergency Medico</h3>
         <p className="text-base md:text-lg text-slate-700 my-4 md:my-6">
-        Health services are coordinated between agencies and with national health authorities via information sharing and regular meetings
+          Health services are coordinated between agencies and with national
+          health authorities via information sharing and regular meetings
         </p>
-        <button className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-          Find a camp
-        </button>
+        <Link to="/availableCamp">
+          <button className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+            Find a camp
+          </button>
+        </Link>
       </div>
       <ShuffleGrid />
     </section>
