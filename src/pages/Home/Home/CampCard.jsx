@@ -58,7 +58,7 @@ const CampCard = ({ camp }) => {
         transformStyle: "preserve-3d",
       }}
     >
-      <div className="w-full h-[570px] s bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+      <div className="w-full h-[520px]  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <div className="w-full mx-auto p-8">
           <a href="#">
             <img

@@ -28,7 +28,7 @@ const Home = () => {
           </select>
         </div>
       </div>
-      <div className="grid md:grid-cols-3 gap-4">
+      <div className="grid md:grid-cols-2 gap-4">
         {camps.map((camp) => (
           <CampCard key={camp._id} camp={camp}></CampCard>
         ))}
