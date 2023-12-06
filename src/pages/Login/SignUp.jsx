@@ -11,6 +11,8 @@ import GoogleLogin from "../../components/GoogleLogin/GoogleLogin";
 const SignUp = () => {
   const axiosPublic = UseAxiosPublic();
   const [showPassword, setShowPassword] = useState(false);
+  const [loading,setLoading]=useState(false)
+  const [showModal,SetShowMOdal]=useState(false)
   const {
     register,
     handleSubmit,

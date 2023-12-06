@@ -5,9 +5,25 @@ import { Link, useLoaderData } from "react-router-dom";
 import CampCard from "./CampCard";
 import { Testimonial } from "../Banner/Testimonial";
 import { Helmet } from "react-helmet-async";
+import { useState } from "react";
 
 const Home = () => {
   const camps = useLoaderData();
+  const [sortBy, setSortBy] = useState("mostRegistered");
+  let results = [];
+  if (camps) {
+    if (sortBy === "mostRegistered") {
+      results = camps.sort((a, b) => b.participants - a.participants);
+    } else if (sortBy === "leastRegistered") {
+      results = camps.sort((a, b) => a.participants - b.participants);
+    } else {
+      results = camps;
+    }
+  }
+
+  const displayCamp = results.slice(0, 6);
+
+
   return (
     <div>
       <Helmet>
@@ -18,14 +34,18 @@ const Home = () => {
       <div className="flex justify-between mb-12">
         <h1 className="mb-3 text-6xl font-bold text-center">Top Rated Camps</h1>
         <div>
-          <select className="select select-success w-full max-w-xs mt-3">
-            <option disabled selected>
-              Most Registered Camp
-            </option>
-            <option>popular Camps</option>
-            <option>Upcoming Camps</option>
-            <option>Added Camps</option>
-          </select>
+          <label className="input-group flex">
+            <select
+              name="sort"
+              className="select select-bordered w-full"
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              id=""
+            >
+              <option value="mostRegistered">Most Registered</option>
+              <option value="leastRegistered">Least Registered</option>
+            </select>
+          </label>
         </div>
       </div>
       <div className="grid md:grid-cols-2 gap-4">
