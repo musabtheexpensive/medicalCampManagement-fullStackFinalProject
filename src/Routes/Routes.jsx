@@ -12,6 +12,7 @@ import ContactUs from "../pages/ContactUs/ContactUs";
 import PrivateRoute from "../Providers/PrivateRoute";
 import AddCamps from "../pages/Dashboard/AddCamps";
 import AdminRoute from "../Providers/AdminRoute";
+import ManageCamp from "../pages/Dashboard/ManageCamp";
 
 export const router = createBrowserRouter([
   {
@@ -84,6 +85,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AddCamps></AddCamps>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manageCamp",
+        element: (
+          <AdminRoute>
+           <ManageCamp></ManageCamp>
           </AdminRoute>
         ),
       },
