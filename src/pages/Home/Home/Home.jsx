@@ -6,6 +6,7 @@ import CampCard from "./CampCard";
 import { Testimonial } from "../Banner/Testimonial";
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
+import Faq from "./Faq";
 
 const Home = () => {
   const camps = useLoaderData();
@@ -59,6 +60,7 @@ const Home = () => {
         </button>
       </Link>
       <Testimonial></Testimonial>
+      <Faq></Faq>
     </div>
   );
 };
