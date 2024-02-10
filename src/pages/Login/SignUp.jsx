@@ -8,6 +8,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import img from "../../assets/blog-header-QR-login.png";
 import UseAxiosPublic from "../../hooks/useAxiosPublic";
 import GoogleLogin from "../../components/GoogleLogin/GoogleLogin";
+
 const SignUp = () => {
   const axiosPublic = UseAxiosPublic();
   const [showPassword, setShowPassword] = useState(false);

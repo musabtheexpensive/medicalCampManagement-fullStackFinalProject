@@ -1,29 +1,66 @@
-import React from "react";
+import { useState } from "react";
 import Banner from "../Banner/Banner";
 import ShuffleHero from "../ShuffleHero/ShuffleHero";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CampCard from "./CampCard";
 import { Testimonial } from "../Banner/Testimonial";
 import { Helmet } from "react-helmet-async";
-import { useState } from "react";
 import Faq from "./Faq";
+import { capitalizeWords } from "../../../utils/capitalizeWords";
+import { useQuery } from "@tanstack/react-query";
+import UseAxiosPublic from "../../../hooks/useAxiosPublic";
+
+const categories = [
+  "Pediatric Vaccination Drive",
+  "Womens Health Camp",
+  "Children's Health Checkup Camp",
+  "Mental Health",
+  "Senior Citizens Health Camp",
+  "Diabetes Awareness Camp",
+  "Ophthalmology",
+  "Cardiology",
+];
 
 const Home = () => {
-  const camps = useLoaderData();
-  const [sortBy, setSortBy] = useState("mostRegistered");
-  let results = [];
-  if (camps) {
-    if (sortBy === "mostRegistered") {
-      results = camps.sort((a, b) => b.participants - a.participants);
-    } else if (sortBy === "leastRegistered") {
-      results = camps.sort((a, b) => a.participants - b.participants);
-    } else {
-      results = camps;
-    }
+  const axios = UseAxiosPublic();
+  const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("");
+  // const [sortBy, setSortBy] = useState("mostRegistered");
+  // const camps = useLoaderData();
+
+  const getCamps = async () => {
+    const res = await axios.get(
+      `/allCamps?sortField=price&sortOrder=${price}&category=${category}`
+    );
+    return res;
+  };
+
+  const {
+    data: camps,
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ["camp", price, category],
+    queryFn: getCamps,
+  });
+  if (isError) {
+    return <p>Something went Wrong: {error}</p>;
   }
+  console.log(camps);
 
-  const displayCamp = results.slice(0, 6);
+  // let results = [];
+  // if (camps) {
+  //   if (sortBy === "mostRegistered") {
+  //     results = camps.sort((a, b) => b.participants - a.participants);
+  //   } else if (sortBy === "leastRegistered") {
+  //     results = camps.sort((a, b) => a.participants - b.participants);
+  //   } else {
+  //     results = camps;
+  //   }
+  // }
 
+  // const displayCamp = results.slice(0, 6);
 
   return (
     <div>
@@ -32,28 +69,67 @@ const Home = () => {
       </Helmet>
       <Banner></Banner>
       <ShuffleHero></ShuffleHero>
-      <div className="flex justify-between mb-12">
-        <h1 className="mb-3 text-6xl font-bold text-center">Top Rated Camps</h1>
-        <div>
-          <label className="input-group flex">
-            <select
-              name="sort"
-              className="select select-bordered w-full"
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-              id=""
-            >
-              <option value="mostRegistered">Most Registered</option>
-              <option value="leastRegistered">Least Registered</option>
-            </select>
+      <div className="mb-2 flex flex-col lg:flex-row justify-end items-center p-5 gap-5">
+        <h1 className="flex-1 mt-5 text-5xl font-extrabold font-serif">
+          Top Rated Camps
+        </h1>
+        <div className="form-control">
+          <label className="mb-2">
+            <span className="label-text ">Category</span>
           </label>
+          <select
+            className="input input-bordered"
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option disabled selected>
+              Choose one
+            </option>
+            {categories.map((item) => (
+              <option key={item} value={item}>
+                {capitalizeWords(item)}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="form-control mb-1">
+          <label className="label">
+            <span className="label-text">Registered</span>
+          </label>
+          <select
+            name="sort"
+            className="input input-bordered"
+            // onChange={(e) => setSortBy(e.target.value)}
+            id=""
+          >
+            <option value="mostRegistered">Most Registered</option>
+            <option value="leastRegistered">Least Registered</option>
+          </select>
+        </div>
+        <div className="form-control mb-1">
+          <label className="label">
+            <span className="label-text">Price</span>
+          </label>
+          <select
+            className="input input-bordered"
+            onChange={(e) => setPrice(e.target.value)}
+          >
+            <option disabled selected>
+              Choose one
+            </option>
+            <option value="asc">From Low To High</option>
+            <option value="desc">From high To Low</option>
+          </select>
         </div>
       </div>
-      <div className="grid md:grid-cols-2 gap-4">
-        {camps.map((camp) => (
-          <CampCard key={camp._id} camp={camp}></CampCard>
-        ))}
-      </div>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="grid md:grid-cols-2 gap-4">
+          {camps?.data?.result?.map((item) => (
+            <CampCard key={item?.id} camp={item}/>
+          ))}
+        </div>
+      )}
       <Link to="/availableCamp">
         <button className="m-7 w-11/12 justify-items-center btn lg:ml-16  text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5  me-2 mb-2">
           See All Camps

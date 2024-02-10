@@ -1,18 +1,19 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 const CampCard = ({ camp }) => {
-  const {
-    _id,
-    campName,
-    image,
-    campFees,
-    scheduledDateTime,
-    venueLocation,
-    specializedServices,
-    healthcareProfessionals,
-    targetAudience,
-  } = camp;
+  // const {
+
+  //   campName,
+  //   image,
+  //   campFees,
+  //   scheduledDateTime,
+  //   venueLocation,
+  //   specializedServices,
+  //   healthcareProfessionals,
+  //   targetAudience,
+  // } = camp;
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -60,25 +61,25 @@ const CampCard = ({ camp }) => {
       }}
     >
       <div className="w-full h-[520px]  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <Helmet>
-        <title>MediCo | CampCard</title>
-      </Helmet>
+        <Helmet>
+          <title>MediCo | CampCard</title>
+        </Helmet>
         <div className="w-full mx-auto p-8">
           <a href="#">
             <img
               className="w-full h-48 object-cover rounded-t-lg"
-              src={image}
+              src={camp?.image}
               alt="camp image"
             />
           </a>
         </div>
-        <h2 className="text-3xl font-bold p-3">{campName}</h2>
+        <h2 className="text-3xl font-bold p-3">{camp?.campName}</h2>
         <div className="px-5 pb-5">
           <a href="#">
             <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-              {healthcareProfessionals}
+              {camp?.healthcareProfessionals}
             </h5>
-            <h3>{scheduledDateTime}</h3>
+            <h3>{camp?.scheduledDateTime}</h3>
           </a>
           <div className="flex items-center mt-2.5 mb-5">
             <div className="flex items-center space-x-1 rtl:space-x-reverse">
@@ -129,17 +130,17 @@ const CampCard = ({ camp }) => {
               </svg>
             </div>
             <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">
-              {targetAudience}
+              {camp?.targetAudience}
             </span>
             <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">
-              {venueLocation}
+              {camp?.venueLocation}
             </span>
           </div>
           <div className="flex items-center justify-between">
             <span className="text-3xl font-bold text-gray-900 dark:text-white">
-              {campFees}
+              {camp?.campFees}
             </span>
-            <Link to={`/availableDetails/${_id}`}>
+            <Link to={`/availableDetails/${camp?._id}`}>
               <button className="text-whitetext-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
                 Details
               </button>
@@ -149,6 +150,10 @@ const CampCard = ({ camp }) => {
       </div>
     </motion.div>
   );
+};
+
+CampCard.propTypes = {
+  camp: PropTypes.object,
 };
 
 export default CampCard;

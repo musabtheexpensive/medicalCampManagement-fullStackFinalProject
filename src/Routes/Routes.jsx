@@ -21,11 +21,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>,
-        loader: () =>
-          fetch(
-            "https://backend-medical-camp-management-full-project-12.vercel.app/allCamps"
-          ),
+        element: <Home></Home>
       },
       {
         path: "/availableCamp",
@@ -92,7 +88,7 @@ export const router = createBrowserRouter([
         path: "manageCamp",
         element: (
           <AdminRoute>
-           <ManageCamp></ManageCamp>
+            <ManageCamp></ManageCamp>
           </AdminRoute>
         ),
       },
